@@ -1,0 +1,18 @@
+# This is ssh server systemwide configuration file.
+#
+# /etc/sshd_config
+
+Port                2222
+ListenAddress              0.0.0.0
+LoginGraceTime             180
+X11Forwarding              yes
+# Ciphers aes128-cbc,3des-cbc,aes256-cbc
+# MACs hmac-sha1,hmac-sha1-96
+StrictModes         yes
+SyslogFacility             DAEMON
+PasswordAuthentication    yes
+PermitEmptyPasswords      no
+PermitRootLogin     yes
+Ciphers aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc
+MACs hmac-sha1-96,hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160
+Subsystem       sftp    /usr/lib/openssh/sftp-server

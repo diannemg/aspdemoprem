@@ -1,0 +1,32 @@
+services:
+  db:
+    build:
+      context: C:\Users\administrator.RTPDEMO\source\repos\virtdbnx
+      dockerfile: virtdbnx_db/Dockerfile
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Nim123Boli!
+    image: microsoft/mssql-server-linux
+    ports:
+    - published: 1401
+      target: 1433
+    volumes:
+    - sql03-virtdbnx-asp:/var/opt/mssql/sqldata/udb:rw
+  virtdbnx:
+    build:
+      context: C:\Users\administrator.RTPDEMO\source\repos\virtdbnx
+      dockerfile: virtdbnx/Dockerfile
+    depends_on:
+    - db
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: virtdbnx
+    ports:
+    - target: 80
+version: '3.4'
+volumes:
+  sql03-virtdbnx-asp:
+    driver: nimble
+    driver_opts:
+      forceImport: "true"
+      importVol: sql03-virtdbnx-asp

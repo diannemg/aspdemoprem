@@ -1,0 +1,31 @@
+version: '3.3'
+volumes:
+  'sql03-virtdbnx-asp':
+    driver: nimble
+    driver_opts:
+      importVol: sql03-virtdbnx-asp
+      forceImport: "true"
+services:
+  virtdbnx:
+    image: docker.io/diannemg278/aspdemoprem:virtdbnx-asp
+    build:
+      context: .
+      dockerfile: virtdbnx/Dockerfile
+    depends_on: 
+      - db
+    ports:
+      - '50938:80'
+      - '2222:2222'
+  db:
+    image: docker.io/diannemg278/aspdemoprem:virtdbnx-asp-db
+    build:
+      context: .
+      dockerfile: virtdbnx_db/Dockerfile
+    environment:
+      SA_PASSWORD: "My_P@ssw0rd!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - '1410:1433'
+    volumes:
+      - sql03-virtdbnx-asp:/var/opt/mssql/sqldata/udb
+    

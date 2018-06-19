@@ -1,0 +1,18 @@
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Nim123Boli!
+    image: microsoft/mssql-server-linux
+  virtdbnx:
+    build:
+      context: C:\Users\administrator.RTPDEMO\source\repos\virtdbnx
+      dockerfile: virtdbnx/Dockerfile
+    depends_on:
+    - db
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: virtdbnx
+    ports:
+    - target: 80
+version: '3.4'
