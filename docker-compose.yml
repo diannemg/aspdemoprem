@@ -3,7 +3,7 @@ volumes:
   'sql03-virtdbnx-asp':
     driver: nimble
     driver_opts:
-      importVol: sql03-virtdbnx-asp
+      importVolAsClone: sql03-virtdbnx-asp
       forceImport: "true"
 services:
   virtdbnx:
