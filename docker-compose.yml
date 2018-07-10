@@ -10,7 +10,7 @@ services:
     image: docker.io/diannemg278/aspdemoprem:virtdbnx-asp
     build:
       context: .
-      dockerfile: virtdbnx/Dockerfile
+      dockerfile: Dockerfile_virtdbnx
     depends_on: 
       - db
     ports:
@@ -20,7 +20,7 @@ services:
     image: docker.io/diannemg278/aspdemoprem:virtdbnx-asp-db
     build:
       context: .
-      dockerfile: virtdbnx_db/Dockerfile
+      dockerfile: Dockerfile_virtdbnx_db
     environment:
       SA_PASSWORD: "My_P@ssw0rd!"
       ACCEPT_EULA: "Y"
