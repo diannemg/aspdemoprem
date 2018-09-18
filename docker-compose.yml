@@ -7,17 +7,17 @@ volumes:
       forceImport: "true"
 services:
   virtdbnx:
-    image: docker.io/diannemg278/aspdemoprem:virtdbnx-asp
+    image: tmeregistry.azurecr.io/virtdbnx-asp
     build:
       context: .
       dockerfile: Dockerfile_virtdbnx
-    depends_on: 
+    depends_on:
       - db
     ports:
       - '50938:80'
       - '2222:2222'
   db:
-    image: docker.io/diannemg278/aspdemoprem:virtdbnx-asp-db
+    image: tmeregistry.azurecr.io/virtdbnx-asp-db
     build:
       context: .
       dockerfile: Dockerfile_virtdbnx_db
@@ -28,4 +28,3 @@ services:
       - '1410:1433'
     volumes:
       - sql03-virtdbnx-asp:/var/opt/mssql/sqldata/udb
-    
