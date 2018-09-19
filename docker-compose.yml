@@ -1,16 +1,16 @@
 version: '3.3'
 volumes:
-  'sql03-virtdbnx-asp':
+  'virtdbnx-asp':
     driver: nimble
     driver_opts:
-      importVolAsClone: sql03-virtdbnx-asp
+      importVol: virtdbnxContext
       forceImport: "true"
 services:
   virtdbnx:
     image: tmeregistry.azurecr.io/virtdbnx-asp
     build:
       context: .
-      dockerfile: Dockerfile_virtdbnx
+      dockerfile: virtdbnx/Dockerfile_virtdbnx
     depends_on:
       - db
     ports:
@@ -20,11 +20,11 @@ services:
     image: tmeregistry.azurecr.io/virtdbnx-asp-db
     build:
       context: .
-      dockerfile: Dockerfile_virtdbnx_db
+      dockerfile: virtdbnx_db/Dockerfile_virtdbnx_db
     environment:
       SA_PASSWORD: "My_P@ssw0rd!"
       ACCEPT_EULA: "Y"
     ports:
       - '1410:1433'
     volumes:
-      - sql03-virtdbnx-asp:/var/opt/mssql/sqldata/udb
+      - virtdbnx-asp:/var/opt/mssql/sqldata/udb
