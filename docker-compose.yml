@@ -3,7 +3,8 @@ volumes:
   'virtdbnx-asp':
     driver: hpecv
     driver_opts:
-      importVol: virtdbnxContext
+      importVolAsClone: virtdbnxContext
+      replStore: tme-staging-array2
       forceImport: "true"
 services:
   virtdbnx:
