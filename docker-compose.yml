@@ -5,7 +5,7 @@ volumes:
     driver_opts:
       importVolAsClone: virtdbnxContext
       replStore: tme-staging-array2
-      forceImport: "true"
+      destroyOnDetach: "true"
 services:
   virtdbnx:
     image: tmeregistry.azurecr.io/virtdbnx-asp
