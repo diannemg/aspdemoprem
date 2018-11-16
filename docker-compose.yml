@@ -3,7 +3,7 @@ volumes:
   'virtdbnx-asp':
     driver: nimble
     driver_opts:
-      importVolAsClone: virtdbnx-AWS.docker
+      importVolAsClone: 1-68-virtdbnx-AWS.docker
       forceImport: "true"
 services:
   virtdbnx:
