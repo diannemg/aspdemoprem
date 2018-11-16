@@ -14,8 +14,8 @@ services:
     depends_on:
       - db
     ports:
-      - '50938:80'
-      - '2222:2222'
+      - '50939:80'
+      - '2223:2222'
   db:
     image: tmeregistry.azurecr.io/virtdbnx-asp-db
     build:
@@ -25,6 +25,6 @@ services:
       SA_PASSWORD: "My_P@ssw0rd!"
       ACCEPT_EULA: "Y"
     ports:
-      - '1410:1433'
+      - '1411:1433'
     volumes:
       - virtdbnx-asp:/var/opt/mssql/sqldata/udb
