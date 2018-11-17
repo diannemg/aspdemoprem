@@ -1,6 +1,6 @@
 version: '3.3'
 volumes:
-  'virtdbnx-asp':
+  'virtdbnx-asp-home':
     driver: nimble
     driver_opts:
       importVolAsClone: 1-68-virtdbnx-AWS.docker
@@ -27,4 +27,4 @@ services:
     ports:
       - '1411:1433'
     volumes:
-      - virtdbnx-asp:/var/opt/mssql/sqldata/udb
+      - virtdbnx-asp-home:/var/opt/mssql/sqldata/udb
