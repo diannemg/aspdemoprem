@@ -4,7 +4,6 @@ volumes:
     driver: nimble
     driver_opts:
       importVolAsClone: virtdbnx-AWS-virtdbnx-asp.docker
-      destroyOnDetach: "true"
       forceImport: "true"
 services:
   virtdbnx:
