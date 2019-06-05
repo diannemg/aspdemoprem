@@ -1,21 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: virtdbnx-asp     
+spec:
+  ports:
+  - name: "50938"
+    port: 50938
+    targetPort: 80
+  - name: "2222"
+    port: 2222                                                                                  
+    targetPort: 2222
+  selector:
+    app: virtdbnx-asp
+type: LoadBalancer
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert -f docker-compose.yml
-    kompose.version: 1.18.0 (06a2e56)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: virtdbnx
-  name: virtdbnx
+  name: virtdbnx-asp
 spec:
-  replicas: 1
-  strategy: {}
+  replicas: 2
+  selector:
+    matchLabels:
+       app: virtdbnx-asp
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: virtdbnx
+        app: virtdbnx-asp
     spec:
       containers:
       - image: tmeregistry.azurecr.io/virtdbnx-asp
@@ -23,6 +34,4 @@ spec:
         ports:
         - containerPort: 80
         - containerPort: 2222
-        resources: {}
       restartPolicy: Always
-status: {}
