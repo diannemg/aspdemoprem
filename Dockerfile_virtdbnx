@@ -1,0 +1,22 @@
+FROM microsoft/dotnet:2.1-sdk AS base
+WORKDIR /app
+EXPOSE 2222 80
+
+FROM microsoft/dotnet:2.1-sdk AS build
+WORKDIR /src
+COPY virtdbnx/virtdbnx.csproj virtdbnx/
+RUN dotnet restore virtdbnx/virtdbnx.csproj
+COPY virtdbnx/ .
+WORKDIR /src/virtdbnx
+RUN dotnet build virtdbnx.csproj -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish virtdbnx.csproj -c Release -o /app
+RUN apt update \
+  && apt install -y --no-install-recommends openssh-server \
+  && mkdir -p /run/sshd \
+  && echo "root:Docker!" | chpasswd
+COPY virtdbnx/sshd_config /etc/ssh/sshd_config
+
+WORKDIR /app
+ENTRYPOINT ["/bin/bash", "-c", "/usr/sbin/sshd && dotnet virtdbnx.dll"]
