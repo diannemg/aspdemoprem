@@ -6,8 +6,8 @@ FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
 COPY virtdbnx.csproj virtdbnx/
 RUN dotnet restore virtdbnx/virtdbnx.csproj
-COPY . .
 WORKDIR /src/virtdbnx
+COPY . .
 RUN dotnet build virtdbnx.csproj -c Release -o /app
 
 FROM build AS publish
