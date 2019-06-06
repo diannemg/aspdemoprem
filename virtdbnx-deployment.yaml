@@ -12,14 +12,15 @@ spec:
     targetPort: 2222
   selector:
     app: virtdbnx-asp
-type: LoadBalancer
+  type: LoadBalancer
+  loadBalancerIP: 10.64.35.209
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: virtdbnx-asp
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
        app: virtdbnx-asp
@@ -29,7 +30,7 @@ spec:
         app: virtdbnx-asp
     spec:
       containers:
-      - image: tmeregistry.azurecr.io/virtdbnx-asp
+      - image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx
         name: virtdbnx
         ports:
         - containerPort: 80

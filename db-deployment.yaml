@@ -9,14 +9,15 @@ spec:
     targetPort: 1433
   selector:
     app: virtdbnx-db
-  type: LoadBalancer    
+  type: LoadBalancer
+  loadBalancerIP: 10.64.35.208  
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: virtdbnx-db
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: Recreate
   template:
@@ -30,7 +31,7 @@ spec:
           value: "Y"
         - name: SA_PASSWORD
           value: My_P@ssw0rd!
-        image: tmeregistry.azurecr.io/virtdbnx-asp-db
+        image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx_db
         name: virtdbnx-db
         ports:
         - containerPort: 1433

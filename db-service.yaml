@@ -1,19 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert -f docker-compose.yml
-    kompose.version: 1.18.0 (06a2e56)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: db
-  name: db
+  name: virtdbnx-db
 spec:
   ports:
-  - name: "1410"
+  - name: "ms-sql-s"
+    protocol: TCP
     port: 1410
     targetPort: 1433
   selector:
-    io.kompose.service: db
-status:
-  loadBalancer: {}
+      app: virtdbnx-db
+  type: LoadBalancer    
+  loadBalancerIP: 10.64.35.247   
+---
