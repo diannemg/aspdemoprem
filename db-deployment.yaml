@@ -2,15 +2,16 @@ apiVersion: v1
 kind: Service
 metadata:
   name: virtdbnx-db
+  labels:
+    app: virtdbnx-db
 spec:
   ports:
-  - name: "1410"
-    port: 1410
+  - port: 1433
     targetPort: 1433
+    protocol: TCP
+    name: mssql
   selector:
     app: virtdbnx-db
-  type: LoadBalancer
-  loadBalancerIP: 10.64.35.208  
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -18,8 +19,9 @@ metadata:
   name: virtdbnx-db
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
+  selector:
+    matchLabels:
+      app: virtdbnx-db
   template:
     metadata:
       labels:
@@ -34,12 +36,11 @@ spec:
         image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx_db
         imagePullPolicy: Always
         name: virtdbnx-db
-        ports:
+        ports:       
         - containerPort: 1433
         volumeMounts:
         - mountPath: /var/opt/mssql/sqldata/udb
           name: virtdbnx-asp    
-      restartPolicy: Always
       volumes:
       - name: virtdbnx-asp
         persistentVolumeClaim:
