@@ -31,6 +31,7 @@ spec:
     spec:
       containers:
       - image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx
+        imagePullPolicy: Always
         name: virtdbnx
         ports:
         - containerPort: 80

@@ -32,12 +32,13 @@ spec:
         - name: SA_PASSWORD
           value: My_P@ssw0rd!
         image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx_db
+        imagePullPolicy: Always
         name: virtdbnx-db
         ports:
         - containerPort: 1433
         volumeMounts:
         - mountPath: /var/opt/mssql/sqldata/udb
-          name: virtdbnx-asp
+          name: virtdbnx-asp    
       restartPolicy: Always
       volumes:
       - name: virtdbnx-asp
