@@ -7,7 +7,6 @@ metadata:
 spec:
   ports:
   - port: 1433
-    targetPort: 1433
     protocol: TCP
   selector:
     app: virtdbnx-db
@@ -21,6 +20,8 @@ spec:
   selector:
     matchLabels:
       app: virtdbnx-db
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
