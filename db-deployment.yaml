@@ -9,7 +9,6 @@ spec:
   - port: 1433
     targetPort: 1433
     protocol: TCP
-    name: mssql
   selector:
     app: virtdbnx-db
 ---
