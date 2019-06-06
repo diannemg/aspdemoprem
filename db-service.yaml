@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: virtdbnx-db
+  name: virtdbnx-db-int
 spec:
   ports:
   - name: "ms-sql-s"
     protocol: TCP
-    port: 1410
+    port: 1433
     targetPort: 1433
   selector:
       app: virtdbnx-db
-  type: LoadBalancer    
-  loadBalancerIP: 10.64.35.247   
 ---
