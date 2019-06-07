@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: virtdbnx-db
+spec:
+  ports:
+  - port: 1433
+    targetPort: 1433
+    protocol: TCP
+    name: mssql
+  selector:
+    app: virtdbnx-db
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: virtdbnx-db
+  template:
+    metadata:
+      labels:
+        app: virtdbnx-db
+    spec:
+      containers:
+      - env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          value: My_P@ssw0rd!
+        image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx_db
+        imagePullPolicy: Always
+        name: db
+        ports:       
+        - containerPort: 1433
+        volumeMounts:
+        - mountPath: /var/opt/mssql/sqldata/udb
+          name: virtdbnx-asp    
+      volumes:
+      - name: virtdbnx-asp
+        persistentVolumeClaim:
+          claimName: pvc

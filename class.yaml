@@ -2,7 +2,7 @@
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
- name: hpecv-sql-class
+ name: class
 provisioner: hpe.com/hpecv
 parameters:
  description: "Nimble Storage Class"
@@ -10,5 +10,4 @@ parameters:
  mountConflictDelay: "150"
  perfPolicy: "SQL"
  protectionTemplate: "daily:14"
- importVol: "hpecv-sql-class-fde8e35a-8966-11e9-b278-42010a960017"
- forceImport: "true" 
+ volumeType: "GPF"
