@@ -17,7 +17,6 @@ spec:
   selector:
     app: virtdbnx-asp
   type: LoadBalancer
-  loadBalancerIP: 10.64.35.209
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
