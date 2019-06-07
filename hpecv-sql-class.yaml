@@ -9,5 +9,5 @@ parameters:
  nameSuffix: ""
  mountConflictDelay: "150"
  importVol: "hpecv-sql-class-50ce7fef-893b-11e9-b278-42010a960017"
- 
+ forceImport: "true" 
 
