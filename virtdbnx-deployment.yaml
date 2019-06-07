@@ -6,7 +6,7 @@ metadata:
     app: virtdbnx-asp  
 spec:
   ports:
-  - port: 50938
+  - port: 80
     targetPort: 80
     protocol: TCP
     name: http
