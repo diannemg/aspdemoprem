@@ -8,7 +8,6 @@ parameters:
  description: "Nimble Storage Class"
  nameSuffix: ""
  mountConflictDelay: "150"
- perfPolicy: "SQL"
- protectionTemplate: "daily:14"
- importVol: "hpecv-sql-class-fde8e35a-8966-11e9-b278-42010a960017"
- forceImport: "true" 
+ importVolAsClone: "hpecv-sql-class-36f66d0c-8b97-11e9-ad81-0ae60cc3ea50"
+ createSnapshot: "true"
+
