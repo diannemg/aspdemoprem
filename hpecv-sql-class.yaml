@@ -9,6 +9,5 @@ parameters:
  nameSuffix: ""
  mountConflictDelay: "150"
  importVolAsClone: "nimble-sql-class-clone"
- 
- 
+ replStore: "gke-demo" 
 
