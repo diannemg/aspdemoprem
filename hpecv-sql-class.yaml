@@ -8,7 +8,7 @@ parameters:
  description: "Nimble Storage Class"
  nameSuffix: ""
  mountConflictDelay: "150"
- importVolAsClone: "nimble-sql-class-fef26f74-87a0-11e9-9f94-32ba88062f53"
- replStore: "gke-demo"
+ importVolAsClone: "nimble-sql-class-clone"
+ 
  
 
