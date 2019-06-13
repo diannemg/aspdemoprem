@@ -35,7 +35,7 @@ spec:
         app: virtdbnx-asp
     spec:
       containers:
-      - image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx
+      - image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx_cicd
         imagePullPolicy: Always
         name: virtdbnx-asp
         ports:
