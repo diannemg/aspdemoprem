@@ -1,0 +1,13 @@
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+ name: hpecv-sql-class
+provisioner: hpe.com/hpecv
+parameters:
+ description: "Nimble Storage Class"
+ nameSuffix: ""
+ mountConflictDelay: "150"
+ importVolAsClone: "nimble-sql-class-5c9416b4-8bb3-11e9-9ba5-a60563c44f98"
+ replStore: "gke-demo" 
+
