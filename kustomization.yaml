@@ -1,0 +1,4 @@
+resources:
+- virtdbnx-asp-pvc.yaml
+- db-deployment.yaml
+- virtdbnx-deployment.yaml
