@@ -30,7 +30,7 @@ spec:
       containers:
       - env:
         - name: ACCEPT_EULA
-          value: \"Y\"
+          "value": "Y"
         - name: SA_PASSWORD
           value: "My_P@ssw0rd!"
         image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx_cicd_db
