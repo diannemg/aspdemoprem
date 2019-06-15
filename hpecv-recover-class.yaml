@@ -1,0 +1,14 @@
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+ name: hpecv-recover-class
+provisioner: hpe.com/hpecv
+parameters:
+ description: "Nimble Storage Class"
+ nameSuffix: ""
+ mountConflictDelay: "150"
+ cloneOf: "hpecv-sql-class-6d7a0305-8f7f-11e9-b6da-0eef6988f076"
+ snapshot: "recover"
+ 
+
