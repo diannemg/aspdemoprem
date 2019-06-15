@@ -10,6 +10,6 @@ parameters:
  mountConflictDelay: "150"
  perfPolicy: "SQL Server"
  protectionTemplate: "cloud-repl-template"
- importVol: "nimble-sql-class-fef26f74-87a0-11e9-9f94-32ba88062f53"
+ importVol: "nimble-sql-class-5c9416b4-8bb3-11e9-9ba5-a60563c44f98"
  forceImport: "true"
  
