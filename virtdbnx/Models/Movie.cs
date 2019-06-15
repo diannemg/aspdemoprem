@@ -10,7 +10,7 @@ namespace virtdbnx.Models
     {
         public int ID { get; set; }
 
-      //  [StringLength(60, MinimumLength = 2)]
+          [StringLength(60, MinimumLength = 2)]
           [Required]
           public string Title { get; set; }
 
@@ -19,18 +19,18 @@ namespace virtdbnx.Models
           [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
           public DateTime ReleaseDate { get; set; }
 
-      //  [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
-      //  [Required]
-      //  [StringLength(30)]
+          [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+          [Required]
+          [StringLength(30)]
           public string Genre { get; set; }
 
           [Range(1, 100)]
           [Column(TypeName = "decimal(18, 2)")]
           public decimal Price { get; set; }
 
-      //  [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
+          [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
           [StringLength(6)]
-      //  [Required]
+          [Required]
           public string Rating { get; set; }
     }
 }
