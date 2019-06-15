@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: virtdbnx-asp
+  labels:
+    app: virtdbnx-asp  
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 2222                                                                                  
+    targetPort: 2222
+    protocol: TCP
+    name: ssh
+  selector:
+    app: virtdbnx-asp
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: virtdbnx-asp
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+       app: virtdbnx-asp
+  template:
+    metadata:
+      labels:
+        app: virtdbnx-asp
+    spec:
+      containers:
+      - image: gcr.io/active-module-235013/github.com/diannemg/aspdemoprem:virtdbnx_cicd
+        imagePullPolicy: Always
+        name: virtdbnx-asp
+        ports:
+        - containerPort: 80
+        - containerPort: 2222
+      restartPolicy: Always
